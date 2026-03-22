@@ -1,6 +1,7 @@
 import express from 'express';
 import crypto from 'crypto';
 import User from '../models/User';
+import auth from "../middleware/auth";
 
 const usersRouter = express.Router();
 
@@ -34,6 +35,10 @@ usersRouter.post('/', async (req, res) => {
             error: 'Something went wrong',
         });
     }
+});
+
+usersRouter.get('/test', auth, async (req, res) => {
+    return res.send({ message: 'Authorized' });
 });
 
 export default usersRouter;
