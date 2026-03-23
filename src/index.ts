@@ -4,6 +4,7 @@ import cors from "cors";
 
 import usersRouter from "./routes/users";
 import userSessionRouter from "./routes/userSession";
+import tasksRouter from "./routes/tasks";
 
 const app = express();
 const port = 8000;
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use("/users", usersRouter);
 app.use('/userSession', userSessionRouter);
+app.use('/tasks', tasksRouter);
 
 mongoose.connect("mongodb://127.0.0.1:27017/todolist");
 
